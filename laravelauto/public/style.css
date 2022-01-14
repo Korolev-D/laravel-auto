@@ -349,6 +349,9 @@ cite{
 .mb1{
 	padding-bottom: 40px;
 }
+img{
+    max-width: 100%;
+}
 img.alignright {
 	float:right;
 	margin-left: 29px;

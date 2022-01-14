@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header text-center">Добавить авто</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,11 +13,18 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
+                            <form method="post" action="/auto/check" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="name" id="name" placeholder="Введите name" class="form-control"><br>
+                                <input type="text" name="vin" id="vin" placeholder="Введите vin" class="form-control"><br>
+                                <input type="text" name="color" id="color" placeholder="Введите color" class="form-control"><br>
+                                <input type="file" name="image"><br>
+                                <button type="submit" class="btn btn-success mt-3">Добавить авто</button>
+                            </form>
                         <ul class="catalog_table">
                             @foreach($autos as $auto)
                                 <li>
-                                    <a href="#" class="thumb"><img src="" alt=""/></a>
+                                    <a href="#" class="thumb"><img src="{{ asset('/storage/'.$auto->image) }}" alt=""/></a>
                                     <div class="catalog_desc">
                                         <div class="location">Location: Berlin, Germany</div>
                                         <div class="title_box">
@@ -26,8 +33,8 @@
                                         </div>
                                         <div class="clear"></div>
                                         <div class="grey_area">
-                                            <span>VIN {{$auto->VIN}}</span>
-                                            <span>3.0 Diesel</span>
+                                            <span>VIN {{$auto->vin}}</span>
+                                            <span>цвет {{$auto->color}}</span>
                                             <span>230 HP</span>
                                             <span>Body Coupe</span>
                                             <span>80 000 Miles</span>
