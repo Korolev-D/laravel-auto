@@ -8,7 +8,22 @@
  */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	
-/******/ 	
+/******/
+/******/
 /******/ })()
 ;
+
+function customDropDown(e) {
+    const dropList = e.parentNode.querySelector('.custom-inner');
+    const options = e.parentNode.querySelectorAll('.custom-inner .custom-option');
+    const result = e.parentNode.querySelector('.select-result');
+
+    dropList.style = "display: block"
+    options.forEach(element => {
+        element.addEventListener("click", element => {
+            result.innerHTML = element.currentTarget.innerHTML;
+            result.setAttribute('value', element.currentTarget.getAttribute('value'));
+            dropList.style = "display: none"
+        })
+    });
+}

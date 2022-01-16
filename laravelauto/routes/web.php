@@ -19,9 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/auto/check', 'App\Http\Controllers\MainConroller@auto_check');
+Route::get('/brand', 'App\Http\Controllers\BrandController@brand');
+
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+
